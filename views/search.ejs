@@ -1,0 +1,17 @@
+<%- include header %>
+<div class="col-lg-12">
+    <div class="container" style="border: 5px solid rgba(230,200,200,0.8);border-radius: 8px;padding-left: 2%;width: 1000px;">
+        <ul class="row list-inline" >
+            <% var lastYear = 0 %>
+            <% posts.forEach(function (post, index) { %>
+            <% if(lastYear != post.time.year) { %>
+            <li class="col-lg-12"><h3><%= post.time.year %></h3></li>
+            <% lastYear = post.time.year } %>
+            <li class="col-lg-12" style="margin-top: 10px;"><time><%= post.time.day %></time></li>
+            <li class="col-lg-12"><h3><a href="/<%= post.user %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h3></li>
+            <li class="col-lg-12">作者：<a href="/<%= post.user %>"><%= post.user %></a> | 日期：<%= post.time.minute %></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<%- include footer %>

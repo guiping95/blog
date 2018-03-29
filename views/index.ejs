@@ -1,0 +1,22 @@
+<%- include header %>
+<div class="col-lg-12" style="text-align: left;">
+    <div class="container" style="border: 5px solid rgba(230,200,200,0.8);border-radius: 8px;width:1000px;">
+        <% if (success) { %>
+        <div style="width: 100px;height: 20px;background-color: #f8f8f8;"><%= success %></div>
+        <% } %>
+        <% if (error) { %>
+        <div><%= error %> </div>
+        <% } %>
+        <% locals.posts.forEach(function(post, index){ %>
+        <p><h6><a href="/<%= post.user %>/<%= post.time.day%>/<%= post.title %>"><%= post.title %></a></h6>
+        <p class="info">
+            作者：<a href="/<%= post.user %>"><%= post.user %></a> |
+            日期：<%= post.time.minute %>
+        </p>
+        <p  style="width:100px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><%- post.post %></p>
+        <p class="info">阅读：<%= post.pv %> | 评论：<%= post.comments.length %></p>
+        <% }) %>
+        <%- include paging %>
+    </div>
+</div>
+<%- include footer %>

@@ -1,0 +1,25 @@
+<%- include header %>
+<div class="col-lg-12">
+    <div class="container" style="margin-top: 100px;">
+        <div class="left" style="position: absolute;"><img src="/images/reg.png" alt="图片" style="width: 500px;height: 300px;float: left;margin-left: 15%;"></div>
+        <div class="right" style="margin-right: 8%;float: right;padding: 4%;height: 300px;width: 400px;text-align: center;">
+            <h3>用户登录</h3>
+            <form method="post" name="form" id="form">
+                <table style="border-collapse: separate;border-spacing: 0 0.5em;text-align: right;">
+                    <tbody>
+                    <tr>
+                        <td><label for="username">用户名:</label></td>
+                        <td style="padding-left: 10px;"><input type="text" id="username" name="username" placeholder="请输入用户名"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">密码:</label></td>
+                        <td><input type="password" id="password" name="password" placeholder="请输入密码"/></td>
+                    </tr>
+                    <tr><td colspan="2" class="btn" ><input type="submit" value="登录"/></td></tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include footer %>

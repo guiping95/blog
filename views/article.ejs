@@ -1,0 +1,39 @@
+<%- include header %>
+<div class="col-lg-12">
+    <div class="container" style="border: 5px solid rgba(230,200,200,0.8);border-radius: 8px;width: 1000px;">
+        <p><h6><a href="/<%= locals.post.user %>/<%= locals.post.time.day %>/<%= locals.post.title %>"><%= locals.post.title %></a></h6></p>
+        <%if(user){%>
+        <%if(user.name == post.user){%>
+        <p>
+            <span><a class="edit" href="/edit/<%= locals.post.user %>/<%= locals.post.time.day %>/<%= locals.post.title %>">编辑</a></span>
+            <span><a class="edit" href="/remove/<%= locals.post.user %>/<%= locals.post.time.day %>/<%= locals.post.title %>">删除</a></span>
+        </p>
+        <%}%>
+        <%}%>
+        <p class="info">
+            作者：<a href="/<%= locals.post.user %>"><%= locals.post.user %></a> |
+            日期：<%= locals.post.time.minute %>
+        </p>
+        <p><marquee class="col-md-12" direction="up" behavior="slide" scrollamount="3" loop="1" ><%- locals.post.post %></marquee></p>
+        <p class="info">阅读：<%= locals.post.pv %> | 评论：<%= locals.post.comments.length %>
+
+            <br /><br />
+            <% if(locals.post.comments){ %>
+            <% locals.post.comments.forEach(function(comment, index){ %>
+        <p><a href="/<%= comment.website %>"><%= comment.name %></a>
+            <time>回复于 <%= comment.time %></time></p>
+        <p><%- comment.content %></p>
+        <% }) %>
+        <% } %>
+
+        <!--基于未登录的用户的留言-->
+        <form method="post">
+            <% if(!locals.user){ %>
+            只有登录用户才能参与评论，请<a href="/login">登录</a>，如果还没有账号，可以立即<a href="/reg">注册</a>！
+            <% } %>
+            <textarea name="content" rows="3" cols="80"></textarea><br />
+            <input type="submit" value="留言" />
+        </form>
+    </div>
+</div>
+<%- include footer %>
